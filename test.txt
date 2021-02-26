@@ -1,0 +1,45 @@
+
+Coffee Machine 
+
+ press 0 to exit 
+ Press 1 to Brew 
+ press 2 to refill 
+ 
+------------->1 //Going to brew recipes
+ ----------------Brewing---------------------
+ Press 0 to Main Menu 
+ Press 1 to brew Hot Tea 
+ Press 2 to brew Hot Coffee 
+ Press 3 to brew Black Tea 
+ Press 4 to brew Green tea 
+ 
+------------->1 // select hot tea to prepare
+ ---------------Drink Prepared----------- // hot tea prepared
+
+
+
+ ----------------Brewing---------------------
+ Press 0 to Main Menu 
+ Press 1 to brew Hot Tea 
+ Press 2 to brew Hot Coffee 
+ Press 3 to brew Black Tea 
+ Press 4 to brew Green tea 
+ 
+------------->2  //select hot coffee to prepare
+ ---------------Drink Prepared----------- // hot coffee prepared
+
+
+
+ ----------------Brewing---------------------
+ Press 0 to Main Menu 
+ Press 1 to brew Hot Tea 
+ Press 2 to brew Hot Coffee 
+ Press 3 to brew Black Tea 
+ Press 4 to brew Green tea 
+ 
+------------->3 // select to brew Black tea //got error insufficent ingredients hot water and sugar syrup
+ Insufficent amount of ingredients hot_water 
+ go to main menu and refill the ingredients
+
+ Insufficent amount of ingredients sugar_syrup 
+ go to main menu and refill the ingredients
