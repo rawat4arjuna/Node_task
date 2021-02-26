@@ -33,48 +33,50 @@ const green_tea = {
   sugar_syrup: 50,
   green_mixture: 30,
 };
+//functions for Refilling the ingredients
 const Refill = () => {
   console.log("all the ingredients");
   for (const [key, value] of Object.entries(total_items_quantity)) {
     console.log(key, "-->", value);
   }
+  console.log("Press 0 to Go Back");
   console.log("Press 1 to refill Hot Water");
   console.log("Press 2 to refill Hot Milk");
   console.log("Press 3 to refill ginger_syrup");
   console.log("Press 4 to refill sugar_syrup");
   console.log("Press 5 to refill tea_leaves_syrup");
-  console.log("Press 6 to Go Back");
   const task = prompt("------------->");
   switch (task) {
     case "1":
-        total_items_quantity['hot_water'] = 500
-        Refill();
+      total_items_quantity["hot_water"] = 500;
+      Refill();
       break;
     case "2":
-        total_items_quantity['hot_milk'] = 500
-        Refill();
+      total_items_quantity["hot_milk"] = 500;
+      Refill();
       break;
     case "3":
-        total_items_quantity['ginger_syrup'] = 100
-        Refill();
+      total_items_quantity["ginger_syrup"] = 100;
+      Refill();
       break;
 
     case "4":
-        total_items_quantity['sugar_syrup'] = 100
-        Refill();
+      total_items_quantity["sugar_syrup"] = 100;
+      Refill();
       break;
     case "5":
-        total_items_quantity['tea_leaves_syrup'] = 100
-        Refill();
+      total_items_quantity["tea_leaves_syrup"] = 100;
+      Refill();
       break;
-    case "6":
-        startMachine();
+    case "0":
+      startMachine();
       break;
     default:
       console.error("wrong Input Please give Correct input\n\n\n");
       Refill();
   }
 };
+// preparing and checking the recipe ingredients
 const prepareRecipe = (val) => {
   let insufficient = false;
   for (const [key, value] of Object.entries(val)) {
@@ -104,6 +106,7 @@ const prepareRecipe = (val) => {
   }
   checkTask("1");
 };
+// function for Recipe Brewing 
 const brewRecipe = (task) => {
   switch (task) {
     case "1":
@@ -118,7 +121,7 @@ const brewRecipe = (task) => {
     case "4":
       prepareRecipe(green_tea);
       break;
-    case "5":
+    case "0":
       startMachine();
       break;
     default:
@@ -126,31 +129,33 @@ const brewRecipe = (task) => {
       checkTask("1");
   }
 };
+//Brew refill function call on input
 const checkTask = (task) => {
   switch (task) {
     case "1":
       console.log("----------------Brewing---------------------");
       console.log(
-        "Press 1 to brew Hot Tea \n Press 2 to brew Hot Coffee " +
-          "\n Press 3 to brew Black Tea \n Press 4 to brew Green tea \n Press 5 to Main Menu"
+        "Press 0 to Main Menu \n Press 1 to brew Hot Tea \n Press 2 to brew Hot Coffee " +
+          "\n Press 3 to brew Black Tea \n Press 4 to brew Green tea \n "
       );
       const task = prompt("------------->");
       brewRecipe(task);
       break;
     case "2":
       console.log("----------------Refill---------------------\n");
-      Refill()
+      Refill();
       break;
-    case "3":
+    case "0":
       break;
     default:
       console.error("wrong Input Please give Correct input\n\n\n");
       startMachine();
   }
 };
+// starting function of the machine to brew refill and exit
 const startMachine = () => {
   console.log(
-    "Coffee Machine \n\n Press 1 to Brew \n press 2 to refill \n press 3 to exit"
+    "Coffee Machine \n\n press 0 to exit \n Press 1 to Brew \n press 2 to refill \n "
   );
   const task = prompt("------------->");
   checkTask(task);

@@ -1,1 +1,2 @@
-# Node_task
+# Coffee Machine
+A basic Coffee Machine Simulation.
