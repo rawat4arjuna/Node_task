@@ -33,46 +33,55 @@ const green_tea = {
   sugar_syrup: 50,
   green_mixture: 30,
 };
+//function to refill if its not full
+const refillBlock=(tag,val)=>{
+  if(total_items_quantity[tag]===val)
+  {
+    console.error("\x1b[31m","can't Refill the ingredients because it  is full \n\n\n");
+    Refill();
+  }
+  else
+  {
+    total_items_quantity[tag] = val;
+    console.log("\x1b[32m","---------------Refilled sucessfully-----------\n");
+    Refill();
+  }
+}
 //functions for Refilling the ingredients
 const Refill = () => {
-  console.log("all the ingredients");
+  console.log("\x1b[33m","all the ingredients");
   for (const [key, value] of Object.entries(total_items_quantity)) {
-    console.log(key, "-->", value);
+    console.log("\x1b[33m",key, "-->", value);
   }
-  console.log("Press 0 to Go Back");
-  console.log("Press 1 to refill Hot Water");
-  console.log("Press 2 to refill Hot Milk");
-  console.log("Press 3 to refill ginger_syrup");
-  console.log("Press 4 to refill sugar_syrup");
-  console.log("Press 5 to refill tea_leaves_syrup");
+  console.log("\x1b[34m","Press 0 to Go Back");
+  console.log("\x1b[34m","Press 1 to refill Hot Water");
+  console.log("\x1b[34m","Press 2 to refill Hot Milk");
+  console.log("\x1b[34m","Press 3 to refill ginger_syrup");
+  console.log("\x1b[34m","Press 4 to refill sugar_syrup");
+  console.log("\x1b[34m","Press 5 to refill tea_leaves_syrup");
   const task = prompt("------------->");
   switch (task) {
     case "1":
-      total_items_quantity["hot_water"] = 500;
-      Refill();
+      refillBlock("hot_water",500)
       break;
     case "2":
-      total_items_quantity["hot_milk"] = 500;
-      Refill();
+      refillBlock("hot_milk",500)
       break;
     case "3":
-      total_items_quantity["ginger_syrup"] = 100;
-      Refill();
+      refillBlock("ginger_syrup",100)
       break;
 
     case "4":
-      total_items_quantity["sugar_syrup"] = 100;
-      Refill();
+      refillBlock("sugar_syrup", 100)
       break;
     case "5":
-      total_items_quantity["tea_leaves_syrup"] = 100;
-      Refill();
+      refillBlock("tea_leaves_syrup", 100)
       break;
     case "0":
       startMachine();
       break;
     default:
-      console.error("wrong Input Please give Correct input\n\n\n");
+      console.error("\x1b[31m","wrong Input Please give Correct input\n\n\n");
       Refill();
   }
 };
@@ -84,14 +93,14 @@ const prepareRecipe = (val) => {
       total_items_quantity[key] === undefined ||
       total_items_quantity[key] === null
     ) {
-      console.log(
+      console.log("\x1b[31m",
         "item Cannot be Prepared because " + key + "is not available \n"
       );
       insufficient = true;
     }
     if (total_items_quantity[key] < value) {
       insufficient = true;
-      console.log(
+      console.log("\x1b[31m",
         "Insufficent amount of ingredients",
         key,
         "\n go to main menu and refill the ingredients\n"
@@ -102,7 +111,7 @@ const prepareRecipe = (val) => {
     }
   }
   if (!insufficient) {
-    console.log("---------------Drink Prepared-----------\n\n\n");
+    console.log("\x1b[32m","---------------Drink Prepared-----------\n\n\n");
   }
   checkTask("1");
 };
@@ -125,7 +134,7 @@ const brewRecipe = (task) => {
       startMachine();
       break;
     default:
-      console.error("wrong Input Please give Correct input\n\n\n");
+      console.error("\x1b[31m","wrong Input Please give Correct input\n\n\n");
       checkTask("1");
   }
 };
@@ -133,8 +142,9 @@ const brewRecipe = (task) => {
 const checkTask = (task) => {
   switch (task) {
     case "1":
-      console.log("----------------Brewing---------------------");
+      console.log("\x1b[33m","----------------Brewing---------------------");
       console.log(
+        "\x1b[34m",
         "Press 0 to Main Menu \n Press 1 to brew Hot Tea \n Press 2 to brew Hot Coffee " +
           "\n Press 3 to brew Black Tea \n Press 4 to brew Green tea \n "
       );
@@ -142,20 +152,21 @@ const checkTask = (task) => {
       brewRecipe(task);
       break;
     case "2":
-      console.log("----------------Refill---------------------\n");
+      console.log( "\x1b[33m" ,"----------------Refill---------------------\n");
       Refill();
       break;
     case "0":
       break;
     default:
-      console.error("wrong Input Please give Correct input\n\n\n");
+      console.error("\x1b[31m","wrong Input Please give Correct input\n\n\n");
       startMachine();
   }
 };
 // starting function of the machine to brew refill and exit
 const startMachine = () => {
   console.log(
-    "Coffee Machine \n\n press 0 to exit \n Press 1 to Brew \n press 2 to refill \n "
+    "\x1b[34m",
+    " Coffee Machine \n\n press 0 to exit \n Press 1 to Brew \n press 2 to refill \n "
   );
   const task = prompt("------------->");
   checkTask(task);
